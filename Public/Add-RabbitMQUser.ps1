@@ -43,7 +43,7 @@ function Add-RabbitMQUser
 
         # Comma-separated list of user tags.
         [parameter(Mandatory=$true, ValueFromPipeline=$true, ValueFromPipelineByPropertyName=$true, Position=2)]
-        [ValidateSet("administrator", "monitoring", "policymaker", "management")]
+        [ValidateSet("administrator", "monitoring", "policymaker", "management","impersonator","none")]
         [string[]]$Tag,
 
         # Name of the computer hosting RabbitMQ server. Defalut value is localhost.
