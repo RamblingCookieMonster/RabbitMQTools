@@ -47,12 +47,12 @@ function Remove-RabbitMQExchangeBinding
 
         # Name of RabbitMQ Source Exchange.
         [parameter(Mandatory=$true, ValueFromPipelineByPropertyName=$true, Position=1)]
-        [Alias("exchange")]
+        [Alias("exchange", "source")]
         [string]$ExchangeName,
 
         # Name of RabbitMQ Destination Exchange.
         [parameter(Mandatory=$true, ValueFromPipelineByPropertyName=$true, Position=2)]
-        [Alias("name", "Name")]
+        [Alias("targetexchange", "TargetExchangeName", "destination")]
         [string]$Name,
 
         # Routing key.
