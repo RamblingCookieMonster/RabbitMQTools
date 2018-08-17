@@ -96,6 +96,7 @@ FunctionsToExport = @(
     'Register-RabbitMQServer',
     'Remove-RabbitMQConnection',
     'Remove-RabbitMQExchange',
+    'Remove-RabbitMQExchangeBinding',
     'Remove-RabbitMQPermission',
     'Remove-RabbitMQQueue',
     'Remove-RabbitMQQueueBinding',
