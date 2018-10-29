@@ -91,7 +91,7 @@ function Add-RabbitMQQueueBinding
         {
             foreach($n in $Name)
             {
-                $url = Join-Parts $BaseUri "/api/bindings/$([System.Web.HttpUtility]::UrlEncode($VirtualHost))/e/$([System.Web.HttpUtility]::UrlEncode($ExchangeName))/q/$([System.Web.HttpUtility]::UrlEncode($Name))"
+                $url = Join-Parts $BaseUri "/api/bindings/$([System.Web.HttpUtility]::UrlEncode($VirtualHost))/e/$([System.Uri]::EscapeDataString($ExchangeName))/q/$([System.Uri]::EscapeDataString($Name))"
                 Write-Verbose "Invoking REST API: $url"
 
                 $body = @{

@@ -80,7 +80,7 @@ function Add-RabbitMQMessage
     {
         if ($pscmdlet.ShouldProcess("server: $BaseUri/$VirtualHost", "Publish message to exchange $ExchangeName with routing key $RoutingKey"))
         {
-            $url = Join-Parts $BaseUri "/api/exchanges/$([System.Web.HttpUtility]::UrlEncode($VirtualHost))/$([System.Web.HttpUtility]::UrlEncode($ExchangeName))/publish"
+            $url = Join-Parts $BaseUri "/api/exchanges/$([System.Web.HttpUtility]::UrlEncode($VirtualHost))/$([System.Uri]::EscapeDataString($ExchangeName))/publish"
             Write-Verbose "Invoking REST API: $url"
 
             $body = @{

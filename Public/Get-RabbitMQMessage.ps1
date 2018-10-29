@@ -113,7 +113,7 @@ function Get-RabbitMQMessage
         if ([bool]$Remove) { $s = "Messages will be removed from the queue." } else {$s = "Messages will be requeued."}
         if ($pscmdlet.ShouldProcess("server: $BaseUri/$VirtualHost", "Get $Count message(s) from queue $Name. $s"))
         {
-            $url = Join-Parts $BaseUri "/api/queues/$([System.Web.HttpUtility]::UrlEncode($VirtualHost))/$([System.Web.HttpUtility]::UrlEncode($Name))/get"
+            $url = Join-Parts $BaseUri "/api/queues/$([System.Web.HttpUtility]::UrlEncode($VirtualHost))/$([System.Uri]::EscapeDataString($Name))/get"
             Write-Verbose "Invoking REST API: $url"
 
             $body = @{

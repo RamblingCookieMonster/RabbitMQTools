@@ -91,7 +91,7 @@ function Get-RabbitMQQueueBinding
         {
             foreach ($n in $Name)
             {
-                $result = GetItemsFromRabbitMQApi -BaseUri $BaseUri $Credentials "queues/$([System.Web.HttpUtility]::UrlEncode($VirtualHost))/$([System.Web.HttpUtility]::UrlEncode($n))/bindings"
+                $result = GetItemsFromRabbitMQApi -BaseUri $BaseUri $Credentials "queues/$([System.Web.HttpUtility]::UrlEncode($VirtualHost))/$([System.Uri]::EscapeDataString($n))/bindings"
 
                 $result | Add-Member -NotePropertyName "HostName" -NotePropertyValue $BaseUri
 
