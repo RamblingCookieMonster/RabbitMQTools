@@ -58,7 +58,7 @@ function Clear-RabbitMQQueue
     {
         if ($pscmdlet.ShouldProcess("server: $BaseUri/$VirtualHost", "purge queue $Name"))
         {
-            $url = Join-Parts $BaseUri "/api/queues/$([System.Web.HttpUtility]::UrlEncode($VirtualHost))/$([System.Web.HttpUtility]::UrlEncode($Name))/contents"
+            $url = Join-Parts $BaseUri "/api/queues/$([System.Web.HttpUtility]::UrlEncode($VirtualHost))/$([System.Uri]::EscapeDataString($Name))/contents"
             Write-Verbose "Invoking REST API: $url"
 
             $result = Invoke-RestMethod $url -Credential $Credentials -AllowEscapedDotsAndSlashes -DisableKeepAlive:$InvokeRestMethodKeepAlive -ErrorAction Continue -Method Delete

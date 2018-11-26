@@ -103,7 +103,7 @@ function Add-RabbitMQQueue
         {
             foreach($n in $Name)
             {
-                $url = Join-Parts $BaseUri "/api/queues/$([System.Web.HttpUtility]::UrlEncode($VirtualHost))/$([System.Web.HttpUtility]::UrlEncode($n))"
+                $url = Join-Parts $BaseUri "/api/queues/$([System.Web.HttpUtility]::UrlEncode($VirtualHost))/$([System.Uri]::EscapeDataString($n))"
                 Write-Verbose "Invoking REST API: $url"
 
                 $body = @{}
